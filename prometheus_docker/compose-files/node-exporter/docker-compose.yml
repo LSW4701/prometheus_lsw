@@ -4,7 +4,7 @@ services:
     container_name: node-exporter
     image: prom/node-exporter:latest
     ports:
-      - "9101:9100"
+      - "9101:9100"  # 호스트에게는 9101을 제공하고 실제로는 9100 으로 프로세스가 뜬다.
 
 networks:
   default:

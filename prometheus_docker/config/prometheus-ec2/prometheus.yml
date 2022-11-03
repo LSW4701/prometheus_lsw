@@ -15,12 +15,12 @@ scrape_configs:
 
   - job_name: 'node'
     metrics_path: /metrics
-    ec2_sd_configs:
+    ec2_sd_configs:                         ##############  aws ec2 
       - region: ap-northeast-2
-        port: 9100 # node-exporter
+        port: 9100                        # node-exporter 가 외부에 노출하는 포츠
         refresh_interval: 10s # default 60s
         filters:
-          - name: tag:monitoring
+          - name: tag:monitoring        # ec2 태그에 monitoring 이 되어있는 애들을 
             values:
               - 'true'
     relabel_configs:
@@ -28,12 +28,12 @@ scrape_configs:
         regex: '(.*)'
         replacement: '${1}:9100'
         action: replace
-        target_label: __address__
-      - source_labels: [ __meta_ec2_tag_Name ]
+        target_label: __address__                       #  __address__ 을 보고 프로메테우스가 요청을한다? 
+      - source_labels: [ __meta_ec2_tag_Name ]   #리 라벨링 
         target_label: instance
-      - source_labels: [ __meta_ec2_tag_group ]
+      - source_labels: [ __meta_ec2_tag_group ]     #리 라벨링 
         target_label: group
-      - source_labels: [ __meta_ec2_instance_type ]
+      - source_labels: [ __meta_ec2_instance_type ]  #리 라벨링 
         target_label: instance_type
-      - source_labels: [ __meta_ec2_architecture ]
-        target_label: arch
+      - source_labels: [ __meta_ec2_architecture ]  #리 라벨링 
+        target_label: arch 
