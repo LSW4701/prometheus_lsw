@@ -63,19 +63,19 @@ scrape_configs:
     static_configs:
       - targets: [ 'host.docker.internal:8080' ]
 
- - job_name: 'dj-custom'
-   scrape_interval: 10s
-   scrape_timeout: 10s
-   metrics_path: /metrics
-   scheme: http
-   http_sd_configs:
-     - follow_redirects: false
-       refresh_interval: 1s
-       url: http://sdapp:8080/targets
+#  - job_name: 'dj-custom'
+#    scrape_interval: 10s
+#    scrape_timeout: 10s
+#    metrics_path: /metrics
+#    scheme: http
+#    http_sd_configs:
+#      - follow_redirects: false
+#        refresh_interval: 1s
+#        url: http://sdapp:8080/targets
 
- - job_name: 'dj-custom-file-sd'
-   file_sd_configs:
-     - files:
-         - /etc/prometheus/sd/dj_custom.json
-       refresh_interval: 10s
+#  - job_name: 'dj-custom-file-sd'
+#    file_sd_configs:
+#      - files:
+#          - /etc/prometheus/sd/dj_custom.json
+#        refresh_interval: 10s
 
